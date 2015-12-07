@@ -6,7 +6,7 @@ function Task(opts) {
 
 function TodoList(tasks) {
   if (!tasks) {
-    var saved = ListPersistence.loadList();
+    var saved = ListPersister.loadList();
     if (saved) {
       tasks = saved.tasks;
     }
@@ -16,11 +16,11 @@ function TodoList(tasks) {
 
 TodoList.prototype.addTask = function(task) {
   this.tasks.push(task);
-  ListPersistence.saveList(this);
+  ListPersister.saveList(this);
 };
 
 
-var ListPersistence = {
+var ListPersister = {
   KEY: 'TODO_LIST',
   saveList: function(list){
     localStorage.setItem(this.KEY, JSON.stringify(list));
