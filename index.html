@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Todo App</title>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.js"></script>
+  <script type="text/javascript" src="model.js"></script>
+  <script type="text/javascript" src="view.js"></script>
+  <script type="text/javascript" src="controller.js"></script>
+  <script type="text/javascript" src="setup.js"></script>
+  <style>body{font-family: sans-serif;}</style>
+</head>
+<body>
+<h2>Existing tasks</h2>
+<ol id="task-list"></ol>
+
+<h2>New Task</h2>
+<form>
+  Description: <input type="text" name="description" id="task_description">
+  Done: <input type="checkbox" name="done" id="task_done">
+  <input type="submit" value="Save task">
+</form>
+
+</body>
+</html>
