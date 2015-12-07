@@ -6,23 +6,26 @@ function Task(opts) {
 
 function TodoList(tasks) {
   if (!tasks) {
-    tasks = ListPersistence.loadTasks();
+    var saved = ListPersistence.loadList();
+    if (saved) {
+      tasks = saved.tasks;
+    }
   }
   this.tasks = tasks || [];
 }
 
 TodoList.prototype.addTask = function(task) {
   this.tasks.push(task);
-  ListPersistence.saveTasks(this.tasks);
+  ListPersistence.saveList(this);
 };
 
 
 var ListPersistence = {
   KEY: 'TODO_LIST',
-  saveTasks: function(tasks){
-    localStorage.setItem(this.KEY, JSON.stringify(tasks));
+  saveList: function(list){
+    localStorage.setItem(this.KEY, JSON.stringify(list));
   },
-  loadTasks: function() {
+  loadList: function() {
     var s = localStorage.getItem(this.KEY);
     console.log(s);
     if (s) {
